@@ -7,10 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.awt.print.Book;
+import java.util.Currency;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -68,6 +66,8 @@ public class BookingsRepositoryInMemoryImplTest {
         toUpdate.setBookingId(1L);
         String updatedDescription = "new";
         toUpdate.setDescription(updatedDescription);
+        toUpdate.setCurrency(Currency.getInstance("USD"));
+        toUpdate.setEmail("email@valid.com");
 
         Booking result = repository.save(toUpdate);
 
