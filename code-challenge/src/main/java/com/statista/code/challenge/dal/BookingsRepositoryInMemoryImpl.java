@@ -17,7 +17,7 @@ public class BookingsRepositoryInMemoryImpl implements BookingsRepository<Bookin
     @Override
     public <S extends Booking> S save(S entity) {
         long id = entity.getBookingId();
-        Optional existingBooking = bookings.stream().filter(b -> b.getBookingId() == id).findAny();
+        Optional existingBooking = findById(id);
         if(existingBooking.isPresent()){
             bookings = bookings.stream().map(b -> {
                 if(b.getBookingId() == id){
@@ -38,8 +38,8 @@ public class BookingsRepositoryInMemoryImpl implements BookingsRepository<Bookin
     }
 
     @Override
-    public Optional<Booking> findById(Long aLong) {
-        return Optional.empty();
+    public Optional<Booking> findById(Long id) {
+        return bookings.stream().filter(b -> b.getBookingId() == id).findAny();
     }
 
     @Override
