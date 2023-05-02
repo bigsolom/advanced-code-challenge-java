@@ -1,4 +1,4 @@
-package com.statista.code.challenge;
+package com.statista.code.challenge.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/bookingservice")
-public class FooBarController {
+public class BookingsController {
     @PostMapping("/booking")
     public ResponseEntity createBooking() {
         return ResponseEntity.ok().build();
