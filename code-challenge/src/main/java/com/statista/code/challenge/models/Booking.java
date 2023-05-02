@@ -1,6 +1,7 @@
 package com.statista.code.challenge.models;
 
 import jakarta.validation.constraints.Email;
+import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 
 import java.util.Currency;
@@ -24,4 +25,8 @@ public class Booking {
 
     private Date subscriptionStartDate;
     private Department department;
+
+    public Booking() {
+
+    }
 }
