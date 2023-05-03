@@ -14,9 +14,14 @@ public class BookingsService {
     @Autowired
     private BookingsRepository bookingsRepository;
 
+    @Autowired
+    private NotificationsService notificationsService;
+
     public Booking createBooking(Booking booking){
         //Booking is already valid
         booking.setBookingId(idGeneratorService.nextID());
-        return bookingsRepository.save(booking);
+        Booking result = bookingsRepository.save(booking);
+        notificationsService.sendConfirmationEmail(result);
+        return result;
     }
 }

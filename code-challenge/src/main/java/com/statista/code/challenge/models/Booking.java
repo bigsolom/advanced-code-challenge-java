@@ -2,6 +2,7 @@ package com.statista.code.challenge.models;
 
 
 import jakarta.validation.constraints.Email;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.lang.NonNull;
@@ -12,6 +13,7 @@ import java.util.Date;
 //@Entity
 @Getter
 @Setter
+//@Builder
 public class Booking {
 
 //    @Autowired
