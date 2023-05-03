@@ -33,7 +33,7 @@ public class BookingsRepositoryImplTest {
     }
 
     @Test
-    void findAllReturnsAllBookings() throws Exception {
+    void findAll_givenThereAreExistingBookings_shouldReturnsThem() throws Exception {
         List<Booking> existing = Stream.of(new Booking(),new Booking()).collect(Collectors.toList());
         repository.setBookings(existing);
         List<Booking> result = repository.findAll();
@@ -41,7 +41,7 @@ public class BookingsRepositoryImplTest {
     }
 
     @Test
-    void saveAddsNewBooking() throws Exception {
+    void save_givenNewBooking_shouldSaveIt() throws Exception {
         List<Booking> existing = Stream.of(new Booking()).collect(Collectors.toList());
         when(idGeneratorService.nextID()).thenReturn(1L);
         Booking booking = new Booking();
@@ -52,7 +52,7 @@ public class BookingsRepositoryImplTest {
     }
 
     @Test
-    void saveUpdatesExistingBooking() throws Exception {
+    void save_givenABookingWithExistingId_shouldReplaceTheExistingOne() throws Exception {
         Booking booking1 = new Booking();
 //        when(idGeneratorService.nextID()).thenReturn(1L);
         booking1.setBookingId(1L);
@@ -77,7 +77,7 @@ public class BookingsRepositoryImplTest {
     }
 
     @Test
-    void findByIdReturnsBookingIfFound() throws Exception {
+    void findById_givenExisitngBookingId_shouldReturnIt() throws Exception {
         Booking booking1 = new Booking();
         long queryId = 1L;
         booking1.setBookingId(queryId);

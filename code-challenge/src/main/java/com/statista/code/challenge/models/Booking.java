@@ -2,6 +2,7 @@ package com.statista.code.challenge.models;
 
 
 import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,8 @@ import java.util.Date;
 //@Entity
 @Getter
 @Setter
-//@Builder
+@Builder
+@AllArgsConstructor
 public class Booking {
 
 //    @Autowired
@@ -35,10 +37,11 @@ public class Booking {
 
     private Date subscriptionStartDate;
     
-    //// TODO: 03.05.23 use object here? 
+    //// TODO: 03.05.23 use object here?
+//    @ValidDepartment
+    @NonNull
     private String department;
 
     public Booking() {
-//        this.setBookingId(idGeneratorService.nextID());
     }
 }

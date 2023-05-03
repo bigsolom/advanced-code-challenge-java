@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.awt.print.Book;
 import java.util.Currency;
 
-//// TODO: 03.05.23 remove, it didn't work 
+//// TODO: 03.05.23 remove, it didn't work
 public class BookingFactory implements FactoryBean<Booking> {
     @Override
     public Booking getObject() throws Exception {
