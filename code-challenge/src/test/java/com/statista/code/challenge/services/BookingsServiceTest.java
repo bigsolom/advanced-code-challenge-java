@@ -53,9 +53,8 @@ public class BookingsServiceTest {
         long queryId = 1L;
         Booking booking1 = new Booking();
         booking1.setBookingId(queryId);
-        Booking booking2 = new Booking();
-        booking2.setBookingId(2L);
-        when(bookingsRepository.findAll()).thenReturn(Stream.of(booking1, booking2).collect(Collectors.toList()));
+
+        when(bookingsRepository.findById(queryId)).thenReturn(Optional.of(booking1));
 
         Optional<Booking> result = bookingsService.findById(queryId);
         assertThat(result).isNotEmpty();
