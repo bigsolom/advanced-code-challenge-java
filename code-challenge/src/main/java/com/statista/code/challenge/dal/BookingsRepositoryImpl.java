@@ -2,20 +2,21 @@ package com.statista.code.challenge.dal;
 
 import com.statista.code.challenge.models.Booking;
 import lombok.Setter;
+import org.springframework.stereotype.Repository;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class BookingsRepositoryInMemoryImpl implements BookingsRepository<Booking, Long> {
+@Repository
+public class BookingsRepositoryImpl implements BookingsRepository {
     @Setter
     //// TODO: 03.05.23 use set to ensure uniquenes of orders
     private List<Booking> bookings = new ArrayList<>();
 
     @Override
-    public <S extends Booking> S save(S entity) {
+    public Booking save(Booking entity) {
         long id = entity.getBookingId();
         Optional existingBooking = findById(id);
         if(existingBooking.isPresent()){
@@ -38,7 +39,7 @@ public class BookingsRepositoryInMemoryImpl implements BookingsRepository<Bookin
     }
 
     @Override
-    public Optional<Booking> findById(Long id) {
+    public Optional<Booking> findById(long id) {
         return bookings.stream().filter(b -> b.getBookingId() == id).findAny();
     }
 

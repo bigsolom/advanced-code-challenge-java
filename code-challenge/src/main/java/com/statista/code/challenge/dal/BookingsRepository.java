@@ -1,16 +1,15 @@
 package com.statista.code.challenge.dal;
 
-import org.springframework.stereotype.Repository;
+import com.statista.code.challenge.models.Booking;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public interface BookingsRepository<T, ID> {
+public interface BookingsRepository {
 
 
 //    @Override
-    <S extends T> S save(S entity);
+    Booking save(Booking entity);
 //
 //    @Override
 //    public <S extends Booking> List<S> saveAll(Iterable<S> entities) {
@@ -18,7 +17,7 @@ public interface BookingsRepository<T, ID> {
 //    }
 //
 //    @Override
-     Optional<T> findById(ID aLong);
+     Optional<Booking> findById(long aLong);
 //
 //    @Override
 //    public boolean existsById(Long aLong) {
@@ -26,7 +25,7 @@ public interface BookingsRepository<T, ID> {
 //    }
 //
 //    @Override
-    public List<T> findAll();
+    public List<Booking> findAll();
 //
 //    @Override
 //    public List<Booking> findAllById(Iterable<Long> longs) {

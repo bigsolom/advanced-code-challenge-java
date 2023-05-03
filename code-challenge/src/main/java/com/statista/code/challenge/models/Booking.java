@@ -1,11 +1,9 @@
 package com.statista.code.challenge.models;
 
-import com.statista.code.challenge.services.BookingIDGeneratorService;
+
 import jakarta.validation.constraints.Email;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 
 import java.util.Currency;
@@ -15,6 +13,10 @@ import java.util.Date;
 @Getter
 @Setter
 public class Booking {
+
+//    @Autowired
+//    private BookingIDGeneratorService idGeneratorService;
+
     private Long bookingId;
 
     private String description;
@@ -30,8 +32,11 @@ public class Booking {
     private String email;
 
     private Date subscriptionStartDate;
-    private Department department;
+    
+    //// TODO: 03.05.23 use object here? 
+    private String department;
 
     public Booking() {
+//        this.setBookingId(idGeneratorService.nextID());
     }
 }

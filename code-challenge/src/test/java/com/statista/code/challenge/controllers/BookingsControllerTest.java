@@ -14,8 +14,12 @@ public class BookingsControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private BookingsRepository<Booking, Long> repository;
+    private BookingsRepository repository;
 
+    @Test
+    void createBookingAssignsIdAndReturnsTheBookingCreated() throws Exception {
+
+    }
     @Test
     void getBookingByIdReturnsBookingWhenFound() throws Exception {
 

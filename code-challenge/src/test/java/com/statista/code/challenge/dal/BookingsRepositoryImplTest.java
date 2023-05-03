@@ -20,16 +20,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class BookingsRepositoryInMemoryImplTest {
+public class BookingsRepositoryImplTest {
 
-    private BookingsRepositoryInMemoryImpl repository;
+    private BookingsRepositoryImpl repository;
 
     @Mock
     private BookingIDGeneratorService idGeneratorService;
 
     @BeforeEach
     void setUp() throws Exception {
-        repository = new BookingsRepositoryInMemoryImpl();
+        repository = new BookingsRepositoryImpl();
     }
 
     @Test
