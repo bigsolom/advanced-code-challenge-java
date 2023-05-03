@@ -30,6 +30,7 @@ public class BookingsService {
 
     public Booking create(Booking booking){
         //Booking is already valid
+        validateBooking(booking);
         booking.setBookingId(idGeneratorService.nextID());
         Booking result = bookingsRepository.save(booking);
         notificationsService.sendConfirmationEmail(result);

@@ -1,6 +1,7 @@
 package com.statista.code.challenge.dal;
 
 import com.statista.code.challenge.models.Booking;
+import com.statista.code.challenge.models.Department;
 import com.statista.code.challenge.services.BookingIDGeneratorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,13 +65,9 @@ public class BookingsRepositoryImplTest {
         List<Booking> existingBookings = Stream.of(booking1, booking2).collect(Collectors.toList());
         repository.setBookings(existingBookings);
 
-        Booking toUpdate = new Booking();
-        toUpdate.setBookingId(1L);
         String updatedDescription = "new";
-        toUpdate.setDescription(updatedDescription);
-        toUpdate.setCurrency(Currency.getInstance("USD"));
-        toUpdate.setEmail("email@valid.com");
-
+        Booking toUpdate = Booking.builder().bookingId(1L).description(updatedDescription).currency(Currency.getInstance("USD")).email("valid@email.com").department(Department.TRIATHLON).build();
+        
         Booking result = repository.save(toUpdate);
 
         assertEquals(updatedDescription, result.getDescription());

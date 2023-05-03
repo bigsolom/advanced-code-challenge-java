@@ -36,9 +36,7 @@ public class Booking {
     private String email;
 
     private Date subscriptionStartDate;
-    
-    //// TODO: 03.05.23 use object here?
-//    @ValidDepartment
+
     @NonNull
     private String department;
 

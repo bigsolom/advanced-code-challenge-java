@@ -2,17 +2,16 @@ package com.statista.code.challenge.services;
 
 import com.statista.code.challenge.dal.BookingsRepository;
 import com.statista.code.challenge.models.Booking;
+import com.statista.code.challenge.models.Department;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.awt.print.Book;
 import java.util.Currency;
-import java.util.Optional;
 import java.util.List;
-
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -66,10 +65,10 @@ public class BookingsServiceTest {
 
     @Test
     void findByDepartment_givenAnExisitingDepartment_shouldReturnAllBookingsWithinTheDepartment() throws Exception {
-        String query = "triathlon_department";
+        String query = Department.TRIATHLON;
         Booking booking1 = newBookingOfDepartment(query);
         Booking booking2 = newBookingOfDepartment(query);
-        Booking booking3 = newBookingOfDepartment("crossfit_department");
+        Booking booking3 = newBookingOfDepartment(Department.CROSSFIT);
 
         when(bookingsRepository.findAll()).thenReturn(Stream.of(booking1, booking2, booking3).collect(Collectors.toList()));
 
@@ -78,7 +77,7 @@ public class BookingsServiceTest {
         assertThat(result).doesNotContain(booking3);
     }
 
-    
+
 
     private Booking newBooking(){
         Booking booking = new Booking();
@@ -93,6 +92,10 @@ public class BookingsServiceTest {
 
     private Booking newBookingOfDepartment(String department){
         return Booking.builder().department(department).currency(Currency.getInstance("USD")).email("valid@email.com").price(0D).build();
+    }
+
+    private Booking newBookingOfCurrency(String currency){
+        return Booking.builder().department(Department.TRIATHLON).currency(Currency.getInstance(currency.toUpperCase())).email("valid@email.com").price(0D).build();
     }
 
 }

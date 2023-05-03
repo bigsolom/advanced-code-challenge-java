@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 @Repository
 public class DepartmentsRepository {
-    Map<String, Department> departments = Stream.of(new TriathlonDepartment("crossfit_department"),new CrossfitDepartment("triathlon_department")).collect(Collectors.toMap(Department::getName, Function.identity()));
+    Map<String, Department> departments = Stream.of(new TriathlonDepartment(Department.TRIATHLON),new CrossfitDepartment(Department.CROSSFIT)).collect(Collectors.toMap(Department::getName, Function.identity()));
 
     public List<Department> findAll() {
         return departments.values().stream().collect(Collectors.toList());

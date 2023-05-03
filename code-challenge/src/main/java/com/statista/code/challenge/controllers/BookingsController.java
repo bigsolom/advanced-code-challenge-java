@@ -26,7 +26,7 @@ public class BookingsController {
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
     @PutMapping("/booking/{bookingId}")
-    public ResponseEntity<Booking> updateBooking(@PathVariable("bookingId") long id, @RequestBody Booking booking) {
+    public ResponseEntity<Booking> updateBooking(@PathVariable("bookingId") long id,@Valid @RequestBody Booking booking) {
 
         return ResponseEntity.ok().build();
     }
@@ -38,7 +38,6 @@ public class BookingsController {
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-//        return ResponseEntity.ok().build();
     }
     @GetMapping("/bookings/department/{department}")
     public ResponseEntity getBookingIdsOfDepartment(@PathVariable("department") String department) {
