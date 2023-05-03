@@ -5,6 +5,8 @@ import com.statista.code.challenge.models.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class BookingsService {
 
@@ -17,11 +19,15 @@ public class BookingsService {
     @Autowired
     private NotificationsService notificationsService;
 
-    public Booking createBooking(Booking booking){
+    public Booking create(Booking booking){
         //Booking is already valid
         booking.setBookingId(idGeneratorService.nextID());
         Booking result = bookingsRepository.save(booking);
         notificationsService.sendConfirmationEmail(result);
         return result;
+    }
+
+    public Optional<Booking> findById(long id){
+        return bookingsRepository.findById(id);
     }
 }
